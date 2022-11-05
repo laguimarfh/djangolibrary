@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     # Add our new application 
     'catalog.apps.CatalogConfig', #This object was created for us in /catalog/apps.py
     'inputcs.apps.InputcsConfig',
+    'django_filters',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
