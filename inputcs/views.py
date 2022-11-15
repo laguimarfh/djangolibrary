@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, FormView, CreateView
+from django.views.generic import ListView, DetailView, FormView, CreateView, TemplateView
 from . import models
 from inputcs.models import Sheet
 from inputcs.forms import SheetForm
@@ -18,7 +18,7 @@ class HomeView(ListView):
 
     def get_queryset(self):
         return Sheet.objects.all().order_by('-created')
-
+    
         
 class DefectCreateView(CreateView):
     form_class = SheetForm

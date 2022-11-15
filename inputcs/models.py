@@ -84,3 +84,7 @@ class Sheet(models.Model):
     def get_absolute_url(self):
         return reverse('defect-detail', kwargs={"pk": self.pk})
 
+class Element(models.Model):
+    step = models.FloatField(null=False, blank=False, default=None)
+    timeoory = models.FloatField(null=False, blank=False, default=None)
+
