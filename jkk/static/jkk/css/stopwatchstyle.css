@@ -1,11 +1,11 @@
-body {
+/* body {
     height: 100vh;
     margin: 40px 0px 0px 0px;
     background-color: #58e065;
     display: flex;
     justify-content: center;
     overflow: hidden;
-  }
+  } */
   
   .display {
     display: flex;
@@ -15,7 +15,7 @@ body {
     font-family: "nunito", "poppins", sans-serif;
     font-weight: 700;
     font-size: 60px;
-    color: white;
+    color: rgb(6, 5, 5);
     text-shadow: 3px 3px 0px rgba(150, 150, 150, 1);
   }
   
@@ -63,11 +63,11 @@ body {
     box-shadow: 3px 3px 0px rgb(179, 101, 0);
   }
   
-  #header {
+  /* #header {
     width: 100%;
     height: 100px;
     position: sticky;
-  }
+  } */
   
   #laps {
     margin-top: 40px;

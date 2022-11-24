@@ -4,7 +4,7 @@
 {% block title %} Home - JKK - period {% endblock %}
 
 {% load static %}
-{% load bootstrap %}
+<!-- {% load bootstrap %} -->
 {% block content %}
 
 <div class="row">
@@ -27,28 +27,45 @@
         <p></p>
         
     <p>
-       Created on: {{ dailyjkk.created }}
+        <div class="form-group">
+            <label for="{{ period }}" class="col-sm-2 control-label">Create</label>
+            <div class="col-sm-10">    
+              <select id="{{ form.club.id_for_label }}" name="{{ form.club.html_name }}" class="form-control">
+                <option value="" selected>None</option>
+                {% for i in period %}
+                <option value="{{ i.id }}">{{ i.created }}</option>
+                {% endfor %}
+              </select>    
+            </div>
+          </div>
+
+        <p></p>
+
+        <div class="form-group">
+            <label for="{{ period }}" class="col-sm-2 control-label">Element</label>
+            <div class="col-sm-10">    
+              <select id="{{ form.club.id_for_label }}" name="{{ form.club.html_name }}" class="form-control">
+                <option value="" selected>None</option>
+                {% for i in period %}
+                <option value="{{ i.id }}">{{ i.auditor }}</option>
+                {% endfor %}
+              </select>    
+            </div>
+          </div>
+
+<!-- 
+        {% for i in period %}
+       Created on: {{ i.created }}
+       {% endfor %} -->
     </p>
     <p>
-    Process: {{ dailyjkk.dailyprocess}}
     </p>  
     
 
     </h4>
     
     
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
     
-        <div class="col-2">
-        {{ form|bootstrap }}
-        </div>
-        <p></p>
-        <div class="col">
-        <button type="submit" class="btn btn-primary">Create</button>
-        </div>
-    </form>
-
 </div>
 
 

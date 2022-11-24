@@ -15,7 +15,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'inputcs/css/bootstrap.min.css'%}" rel="stylesheet">
-    
+    <link href="{% static 'jkk/css/stopwatchstyle.css'%}" rel="stylesheet">
+    <link href="{% static 'jkk/css/navbar-top-fixed.css'%}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'inputcs/css/image-zoom.css'%}"/>
 
     <!-- Favicons -->
@@ -27,8 +28,19 @@
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#7952b3">
 
-
-    <style>
+<style>
+  #id_steptime_1 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_2 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_3 {
+    width: 60px;
+    height: 30px;
+}
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -42,130 +54,59 @@
           font-size: 3.5rem;
         }
       }
-    </style>
+</style>
 
     
     <!-- Custom styles for this template -->
     <link href="{% static 'inputcs/css/dashboard.css' %}" rel="stylesheet">
   </head>
   <body>
-    
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{% url 'home' %}">TMMC - Sealer</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+        
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TMMC - Sealer</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">CS Tracking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'input' %}">Add Defect</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'bootstrap' %}">Filter Defects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'jkkhome' %}">JKK S8</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
     </div>
-  </div> -->
-</header>
-
-<div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
-              <span data-feather="home"></span>
-              Defect List
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'input' %}">
-              <span data-feather="file"></span>
-              Input defects
-            </a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="{% url 'bootstrap' %}">
-              <span data-feather="shopping-cart"></span>
-              Filters
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'jkkhome' %}">
-              <span data-feather="users"></span>
-              JKK
-            </a>
-          </li> 
-          <!--
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li> -->
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar"></span>
-            This week
-          </button>
-        </div>
-      </div> -->
-
-      <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
-
-      {% block content %}
-
-      {% endblock %}
-
-    </main>
   </div>
-</div>
+</nav>
+
+    <main class="container">
+      <div class="bg-light p-1 rounded">
+        {% block content %}
+
+        {% endblock %}
+      
+      </div>
+    </main>
+    
+  
 
     
     <!-- <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->

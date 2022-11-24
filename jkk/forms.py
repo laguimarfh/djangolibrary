@@ -11,23 +11,23 @@ from . import models
             
 #         # }
 
-class dailyjkkForm(forms.ModelForm):
+class jkks8Form(forms.ModelForm):
     class Meta:
-        model = models.dailyJkk
-        fields = ['dailyprocess']
+        model = models.Jkks8
+        fields = '__all__'
     
 
-class periodjkkForm(forms.ModelForm):
-    class Meta:
-        model = models.periodJkk
-        fields = ['jkk_dayly_tm','auditor']
+# class periodjkkForm(forms.ModelForm):
+#     class Meta:
+#         model = models.periodJkk
+#         fields = ['jkk_tm','auditor']
 
 # class checkjkkForm(forms.ModelForm):
 #     class Meta:
 #         model = models.checkJkk
 #         fields = ['timecheck']
 
-class stopwatchForm(forms.ModelForm):
-    class Meta:
-        model = models.stopwatch
-        fields = ['timeelement']
+# class stopwatchForm(forms.ModelForm):
+#     class Meta:
+#         model = models.stopwatch
+#         fields = ['timeelement']

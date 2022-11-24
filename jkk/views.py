@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from django.views.generic import TemplateView, CreateView, DetailView, ListView
-from jkk.forms import dailyjkkForm, periodjkkForm, stopwatchForm
+from jkk.forms import jkks8Form
 from . import models
 from datetime import datetime
 # Create your views here.
@@ -20,51 +20,32 @@ from datetime import datetime
         
 #         return context
 
-class dailyjkkView(CreateView):
+class jkks8View(CreateView):
     """
     The JKK Homepage
     """
-    form_class = dailyjkkForm
+    form_class = jkks8Form
     template_name = 'jkk/home.html'
 
     def get_context_data(self, **kwargs):
-        dailyjkk_form = dailyjkkForm
+        jkks8_form = jkks8Form
         context = super().get_context_data(**kwargs)
-        context['dailyjkk_form'] = dailyjkk_form
+        context['jkks8_form'] = jkks8_form
         
         return context
 
 
-class periodjkkView(DetailView, CreateView):
-    """
-    The JKK Homepage
-    """
-    model = models.dailyJkk
-    form_class = periodjkkForm
-    template_name = 'jkk/jkkperiod.html'
-    context_object_name = 'dailyjkk'
-    
-    # def get_queryset(self):
-    #     return models.dailyJkk.objects.fi
-
-    def get_context_data(self, **kwargs):
-        periodjkk_form = periodjkkForm
-        context = super().get_context_data(**kwargs)
-        context['periodjkk_form'] = periodjkk_form
-        
-        return context
-
-# class checkjkkView(DetailView, CreateView):
+# class periodjkkView(DetailView, CreateView):
 #     """
 #     The JKK Homepage
 #     """
-#     model = models.checkJkk
-#     form_class = checkjkkForm
-#     template_name = 'jkk/jkkcheck.html'
-#     context_object_name = 'checkjkk'
+#     model = models.Jkk
+#     form_class = periodjkkForm
+#     template_name = 'jkk/jkkperiod.html'
+#     context_object_name = 'jkk'
     
-#     # def get_queryset(self):
-#     #     return models.dailyJkk.objects.fi
+    # def get_queryset(self):
+    #     return models.dailyJkk.objects.fi
 
 #     def get_context_data(self, **kwargs):
 #         periodjkk_form = periodjkkForm
@@ -73,21 +54,22 @@ class periodjkkView(DetailView, CreateView):
         
 #         return context
 
-class stopwatchView(CreateView):
-    """
-    The JKK Homepage
-    """
-    model = models.stopwatch
-    form_class = stopwatchForm
-    template_name = 'jkk/stopwatch.html'
-    # context_object_name = 'stopwatch'
+
+# class stopwatchView(CreateView):
+#     """
+#     The JKK Homepage
+#     """
+#     model = models.stopwatch
+#     form_class = stopwatchForm
+#     template_name = 'jkk/stopwatch.html'
+#     # context_object_name = 'stopwatch'
     
-    # def get_queryset(self):
+#     # def get_queryset(self):
     #     return models.dailyJkk.objects.fi
 
-    def get_context_data(self, **kwargs):
-        stopwatch_form = stopwatchForm
-        context = super().get_context_data(**kwargs)
-        context['stopwatch_form'] = stopwatch_form
+    # def get_context_data(self, **kwargs):
+    #     stopwatch_form = stopwatchForm
+    #     context = super().get_context_data(**kwargs)
+    #     context['stopwatch_form'] = stopwatch_form
         
-        return context
+    #     return context
