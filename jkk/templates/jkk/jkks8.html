@@ -1,0 +1,471 @@
+{% load static %}
+{% load bootstrap %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Jose Lazaro Guimaraes">
+    <title>JKK - S8</title>
+    
+
+    <link rel="canonical" href="http://127.0.0.1:8000/input/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'inputcs/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'jkk/css/stopwatchstyle.css'%}" rel="stylesheet">
+    <link href="{% static 'jkk/css/navbar-top-fixed.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'inputcs/css/image-zoom.css'%}"/>
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<!-- <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json"> -->
+<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+
+<style>
+  #id_steptime_1 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_2 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_3 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_4 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_5 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_6 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_7 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_8 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_9 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_10 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_11 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_12 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_13 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_14 {
+    width: 60px;
+    height: 30px;
+}
+#id_steptime_15 {
+    width: 60px;
+    height: 30px;
+}
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+</style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'inputcs/css/dashboard.css' %}" rel="stylesheet">
+  </head>
+  <body>
+        
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'jkks8' %}">TMMC - Sealer</a>
+    <button type="button" id="startBtn">Start</button>
+    <!-- <button type="button" id="resetBtn">Reset</button> -->
+    <button type="button" id="lapBtn">Lap</button>
+    <form>
+      <button type="submit" formaction="{% url 'jkks8' %}">Clear</button>
+   </form> 
+   
+    <div class="wrapper" id="wrapper">
+      <div class="display">
+        <!-- <p class="timerDisplay" id="timerHrs">00</p> :
+        <p class="timerDisplay" id="timerMins">00</p> : -->
+        <p class="timerDisplay" id="timerSec">000</p> :
+        <p class="timerDisplay" id="timerMilisec">00</p>
+      </div>
+  </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">CS Tracking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'input' %}">Add Defect</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'bootstrap' %}">Filter Defects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'jkks8' %}">JKK S8</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="bg-light p-1 rounded">
+
+        <!-- Showing defects and filter  -->
+
+    <div class="row">
+
+
+      <div class="col">
+          
+          <h2 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted">Lexus RX - Sealer - JKK - S8 </span>
+              <!-- <span class="badge bg-secondary rounded-pill">3</span> -->
+          </h2>
+      </div>
+
+    </div>
+
+
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th >Element</th>
+                <th class="th-sm">Keypoint</th>
+                <th>Work Time</th>
+                <th>Walk Time</th>
+                <th>+ / -</th>
+                <th>audit time</th>
+                <th>status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td class="td-sm">Spatula Left Front Door Frame & Outer Corner</td>
+                <td >60mm upper door frame flat finish. No xs in Assembly holes.
+                    70mm feathered spatula finish. 70mm lower door frame flat finish</td>
+                <td >21</td>
+                <td >1</td>
+                <td >3.3</td>
+                <td >{{ form.steptime_1}}</td>
+                <td >{{ form.checkstatus_1}}</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Spatula Left Front Door Inner Corner  & A-Pillar</td>
+                <td>Feathered finish at door inner corner. Turn spatula in at the top and bottom to fills seams. 
+                  Gaps will result in corrosion.</td>
+                <td >15</td>
+                <td >0</td>
+                <td >2.25</td>
+                <td >{{ form.steptime_2}}</td>
+                <td >{{ form.checkstatus_2}}</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Inspect Left Front Door Inner and Rocker, Close Front Door Halfway</td>
+                <td>Flashlight inspection technique. Proper door handling technique.</td>
+                <td>12</td>
+                <td>1</td>
+                <td>1.95</td>
+                <td>{{ form.steptime_3}}</td>
+                <td>{{ form.checkstatus_3}}</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Inspect Front Door Outer Edge, Spatula Outer Window, 
+                  Inspect Front Door Inner Edge, Close Door, Replace Tools</td>
+                <td>Inspect past character line. No sealer in the assembly holes, 
+                  use inner panel to close the door.</td>
+                <td>9</td>
+                <td>5</td>
+                <td>2.1</td>
+                <td>{{ form.steptime_4}}</td>
+                <td>{{ form.checkstatus_4}}</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Inspect & Brush Left Trunk, Lower Hood, Engine Compartment and Shocktowers</td>
+                <td>Gaps will result in waterleaks in the trunk and corrosion in the engine. 
+                  Delta S holes must be free of xs sealer.</td>
+                <td>23</td>
+                <td>4</td>
+                <td>4.05</td>
+                <td>{{ form.steptime_5}}</td>
+                <td>{{ form.checkstatus_5}}</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Replace Tools, Apply Left Front Door Frame,Outer Corner & Inner Corner, Replace Tools</td>
+                <td>Bead width must be 3mm from start to finish. Apply only to the outside edge of the door frame.</td>
+                <td>15</td>
+                <td>4</td>
+                <td>2.85</td>
+                <td>{{ form.steptime_6}}</td>
+                <td>{{ form.checkstatus_6}}</td>
+              </tr>
+              <!-- <tr>
+                <th scope="row">7</th>
+                <td>Inspect Left Front Door Outer and Inner Edges</td>
+                <td>Inspect from bottom of Chong to character line. Inspect from top right of outer door corner to character line.</td>
+                <td>2</td>
+                <td>3</td>
+                <td>0.75</td>
+                <td>{{ form.steptime_7}}</td>
+                <td>{{ form.checkstatus_7}}</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Pick-Up Brush and Brush Combi</td>
+                <td>Grasp brush by handle. Brushing at Points A and B</td>                
+                <td>4</td>
+                <td>1</td>
+                <td>0.75</td>
+                <td>{{ form.steptime_8}}</td>
+                <td>{{ form.checkstatus_8}}</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Tap Grommet and Inspect and Brush Left Trunk Seams</td>
+                <td>Verify grommet is in place by leaving a spot of sealer on it. Gaps will result in waterleaks.</td>                
+                <td>11</td>
+                <td>1</td>
+                <td>1.8</td>
+                <td>{{ form.steptime_9}}</td>
+                <td>{{ form.checkstatus_9}}</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>Brush Left Headlamp Seam</td>
+                <td>Gaps will result in corrosion.</td>                
+                <td>2</td>
+                <td>0</td>
+                <td>0.3</td>
+                <td>{{ form.steptime_10}}</td>
+                <td>{{ form.checkstatus_10}}</td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td>Inspect And Brush Left Engine (1) & (2)</td>
+                <td>Gaps will result in corrosion.</td>                
+                <td>4</td>
+                <td>2</td>
+                <td>0.9</td>
+                <td>{{ form.steptime_11}}</td>
+                <td>{{ form.checkstatus_11}}</td>
+              </tr>
+              <tr>
+                <th scope="row">12</th>
+                <td>Return Brush</td>
+                <td>Set brush down by handle.</td>                
+                <td>2</td>
+                <td>2</td>
+                <td>0.6</td>
+                <td>{{ form.steptime_12}}</td>
+                <td>{{ form.checkstatus_12}}</td>
+              </tr>
+              <tr>
+                <th scope="row">13</th>
+                <td>Return Pot/Spatula & Pick Up Drip Gun</td>
+                <td>Use right hand to pick up gun.</td>                
+                <td>2</td>
+                <td>1</td>
+                <td>0.45</td>
+                <td>{{ form.steptime_13}}</td>
+                <td>{{ form.checkstatus_13}}</td>
+              </tr>
+              <tr>
+                <th scope="row">14</th>
+                <td>Apply Left Front Door Frame, Outer Corner and Inner Corner</td>
+                <td>Bead width must be 3mm from start to finish, Apply only to the outside edge of the door frame.</td>                
+                <td>10</td>
+                <td>3</td>
+                <td>1.95</td>
+                <td>{{ form.steptime_14}}</td>
+                <td>{{ form.checkstatus_14}}</td>
+              </tr>
+              <tr>
+                <th scope="row">15</th>
+                <td>Retun Drip Gun & Pick Up Pot/Spatula</td>
+                <td>Use 2 hands, one for pot and one for spatula.</td>                
+                <td>2</td>
+                <td>1</td>
+                <td>0.45</td>
+                <td>{{ form.steptime_15}}</td>
+                <td>{{ form.checkstatus_15}}</td>
+              </tr> -->
+            </tbody>
+          </table>
+
+    </div>
+
+          
+
+            <!-- <button type="button" id="startBtn">Start</button>
+            <button type="button" id="resetBtn">Reset</button>
+            <button type="button" id="lapBtn">Lap</button>
+             -->
+        
+          
+              <!-- <label for="jkk_tm">Team Member</label> -->
+           
+              
+              <div class="row">
+                <div class="col-3">
+              <label for="id_periodadh">Period Adherence</label>
+                {{ form.periodadh}}
+                </div>
+
+              {{ form.jkk_teammember|bootstrap}}
+              {{ form.jkk_auditor|bootstrap}}
+              <p></p>
+              <p></p>
+              <p></p>
+              <div class="row">
+                <div class="col-3">
+              <label for="inputState">Period</label>
+                {{ form.period_sel}}
+                </div>
+                <div class="col-3">
+                <label for="inputState">Step Number</label>
+                {{ form.step_number}}
+                </div>
+              </div>
+              {{ form.comment|bootstrap}}
+
+<!-- 
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="id_jkk_tm" class="col-form-label-sm">Team Member</label>
+                {{ form.jkk_tm }} 
+              </div>
+            </div>
+              <div class="col">
+              <div class="form-group">
+                <label for="id_jkk_auditor" class="col-form-label-sm">Auditor</label>
+                            {{ form.jkk_auditor}}
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group row">
+                <label for="id_period_sel" class="col-form-label-sm">Period</label>
+                            {{ form.period_sel}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="id_comment_step" class="col-sm-2 col-form-label">Step Number</label>
+              <div class="col-sm-10">
+                <input type="number" name="comment_step" required="" id="id_comment_step">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="id_comment" class="col-sm-2 col-form-label">Comment</label>
+              <div class="col-sm-10">
+                <textarea name="comment" cols="30" rows="5" required="" id="id_comment"></textarea>
+              </div>
+            </div> -->
+    
+                  
+          <p></p>
+          <p></p>
+          <div class="row-md-3">
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+
+        
+    </form>
+
+  </div>
+
+<!-- <h1>Laps:</h1> -->
+  
+    <div id="laps">
+      <p id="lapRecord"></p>
+      <p id="stepRecord"></p>
+      
+      <!-- <p id="x"></p> -->
+      <!-- <p id="xarray"></p> -->
+    </div>
+
+      
+  </div>
+    </main>
+    
+  
+
+    
+    <!-- <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script>window.jQuery || document.write('<script src="{% static "inputcs/js/jquery.slim.min.js" %}"><\/script>')</script>
+    <script src="{% static 'inputcs/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'jkk/js/stopwatch.js' %}"></script>
+    <script src="{% static 'inputcs/js/jquery-3.6.1.js' %}"></script>
+    <!-- <script src="{% static 'js/image-zoom.min.js' %}"></script> -->
+  
+
+      <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script> -->
+      <!-- <script src="{% static 'js/dashboard.js' %}"></script> -->
+  </body>
+</html>

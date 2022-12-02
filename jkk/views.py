@@ -20,12 +20,28 @@ from datetime import datetime
         
 #         return context
 
+
+class jkkhomeView(TemplateView):
+    """
+    The JKK S8 PROCESS
+    """
+    template_name = 'jkk/home.html'
+
+    # def get_context_data(self, **kwargs):
+    #     jkks8_form = jkks8Form
+    #     context = super().get_context_data(**kwargs)
+    #     context['jkks8_form'] = jkks8_form
+        
+    #     return context
+
+
+
 class jkks8View(CreateView):
     """
-    The JKK Homepage
+    The JKK S8 PROCESS
     """
     form_class = jkks8Form
-    template_name = 'jkk/home.html'
+    template_name = 'jkk/jkks8.html'
 
     def get_context_data(self, **kwargs):
         jkks8_form = jkks8Form

@@ -22,8 +22,8 @@ class Jkks8(models.Model):
         choices=PERIOD,
         help_text='Period select')
     created = models.DateTimeField(auto_now_add=True)
-    jkk_tm = models.CharField(max_length=200, null=False)
-    jkk_auditor = models.CharField(max_length=200, null=False)
+    jkk_teammember = models.ForeignKey('teamMember', on_delete=models.SET_NULL, null=True)
+    jkk_auditor = models.ForeignKey('teamLeader', on_delete=models.SET_NULL, null=True)
     periodadh = models.FloatField(null=True, blank=True)
     # step_1 = models.CharField(max_length=300)
     # step_2 = models.CharField(max_length=300)
@@ -33,6 +33,18 @@ class Jkks8(models.Model):
     steptime_1 = models.FloatField(null=True, blank=True)
     steptime_2 = models.FloatField(null=True, blank=True)
     steptime_3 = models.FloatField(null=True, blank=True)
+    steptime_4 = models.FloatField(null=True, blank=True)
+    steptime_5 = models.FloatField(null=True, blank=True)
+    steptime_6 = models.FloatField(null=True, blank=True)
+    # steptime_7 = models.FloatField(null=True, blank=True)
+    # steptime_8 = models.FloatField(null=True, blank=True)
+    # steptime_9 = models.FloatField(null=True, blank=True)
+    # steptime_10 = models.FloatField(null=True, blank=True)
+    # steptime_11 = models.FloatField(null=True, blank=True)
+    # steptime_12 = models.FloatField(null=True, blank=True)
+    # steptime_13 = models.FloatField(null=True, blank=True)
+    # steptime_14 = models.FloatField(null=True, blank=True)
+    # steptime_15 = models.FloatField(null=True, blank=True)
     # steptol_1 = models.FloatField(null=True, blank=True)
     # steptol_2 = models.FloatField(null=True, blank=True)
     # steptol_3 = models.FloatField(null=True, blank=True)
@@ -41,30 +53,51 @@ class Jkks8(models.Model):
     checkstatus_1 = models.BooleanField(null=True)
     checkstatus_2 = models.BooleanField(null=True)
     checkstatus_3 = models.BooleanField(null=True)
+    checkstatus_4 = models.BooleanField(null=True)
+    checkstatus_5 = models.BooleanField(null=True)
+    checkstatus_6 = models.BooleanField(null=True)
+    # checkstatus_7 = models.BooleanField(null=True)
+    # checkstatus_8 = models.BooleanField(null=True)
+    # checkstatus_9 = models.BooleanField(null=True)
+    # checkstatus_10 = models.BooleanField(null=True)
+    # checkstatus_11 = models.BooleanField(null=True)
+    # checkstatus_12 = models.BooleanField(null=True)
+    # checkstatus_13 = models.BooleanField(null=True)
+    # checkstatus_14 = models.BooleanField(null=True)
+    # checkstatus_15 = models.BooleanField(null=True)
+    step_number = models.IntegerField(null=True)
+    comment = models.CharField(max_length=200, null=True)
 
-    
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular author instance."""
+        return reverse('jkks8')
+
+    def __str__(self):
+            """String for representing the Model object."""
+            return "JKK S8 Created on " + self.created.strftime("%m/%d/%Y, %H:%M:%S")
 
 
-# class teamMember(models.Model):
-#     """
-#     _summary_ Sealer 
-#     """
-#     employeeid = models.CharField(max_length=6)
-#     name = models.CharField(max_length=100)
-#     def __str__(self):
-#         """String for representing the Model object."""
-#         return self.name
+class teamMember(models.Model):
+    """
+    _summary_ Sealer 
+    """
+    employeeid = models.CharField(max_length=6)
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
 
-# class teamleader(models.Model):
-#     """
-#     _summary_ Sealer 
+class teamLeader(models.Model):
+    """
+    _summary_ Sealer 
 
-#     """
-#     employeeid = models.CharField(max_length=6)
-#     name = models.CharField(max_length=100)
-#     def __str__(self):
-#         """String for representing the Model object."""
-#         return self.name
+    """
+    employeeid = models.CharField(max_length=6)
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
 
 
 

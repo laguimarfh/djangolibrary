@@ -9,263 +9,30 @@
     <div class="row">
 
 
-    <div class="col">
-        
-        <h2 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Lexus RX - Sealer - JKK - S8 </span>
-            <!-- <span class="badge bg-secondary rounded-pill">3</span> -->
-        </h2>
-    </div>
-
-    </div>
-
-
-    
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="row">
-        <!-- <label for="jkk_tm">Team Member</label> -->
-    
-            
-                    <div class="col-4">
-                      <label for="id_jkk_tm" class="col-form-label-lg">Team Member</label>
-                      {{ form.jkk_tm }} 
-                    </div>
-                    <div class="col">
-                      <label for="id_jkk_auditor" class="col-form-label-lg">Auditor</label>
-                      {{ form.jkk_auditor}}
-                    </div>
-                    <div class="col-4">
-                      <label for="id_period_sel" class="col-form-label-lg">Period</label>
-                      {{ form.period_sel}}
-                    </div>
-            
-    
-        </div>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th >Element</th>
-                <th class="th-sm">Keypoint</th>
-                <th>Work Time</th>
-                <th>Walk Time</th>
-                <th>+ / -</th>
-                <th>audit time</th>
-                <th>status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td class="td-sm">Spatula Left Front Door Frame and Outer Corner</td>
-                <td >Flat finish. No xs in Assembly holes. 40mm feathered spatula finish</td>
-                <td >21</td>
-                <td >1</td>
-                <td >3.3</td>
-                <td >{{ form.steptime_1}}</td>
-                <td >{{ form.checkstatus_1}}</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Spatula Left Front Door Speaker Seam & Inner Corner</td>
-                <td>Feathered finish at door inner corner. Turn spatula in at the top and bottom to fills seams.</td>
-                <td >18</td>
-                <td >1</td>
-                <td >2.85</td>
-                <td >{{ form.steptime_2}}</td>
-                <td >{{ form.checkstatus_2}}</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Spatula Left Front Door Inner Rocker</td>
-                <td>Gaps will result in corrosion.</td>
-                <td>5</td>
-                <td>0</td>
-                <td>0.75</td>
-                <td>{{ form.steptime_3}}</td>
-                <td>{{ form.checkstatus_3}}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          </div>
-
-          <div class="row-4">
-
-            <button type="button" id="startBtn">Start</button>
-            <button type="button" id="resetBtn">Reset</button>
-            <button type="button" id="lapBtn">Lap</button>
-            
-          </div>
-          <div class="row">
-            <div class="wrapper" id="wrapper">
-                <div class="display">
-                  <!-- <p class="timerDisplay" id="timerHrs">00</p> :
-                  <p class="timerDisplay" id="timerMins">00</p> : -->
-                  <p class="timerDisplay" id="timerSec">000</p> :
-                  <p class="timerDisplay" id="timerMilisec">00</p>
-                </div>
-            </div>
-        </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+      <div class="col">
           
+          <h2 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted">Lexus RX - Sealer - JKK  </span>
+              <!-- <span class="badge bg-secondary rounded-pill">3</span> -->
+          </h2>
+          <h3>
+            <form action="">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Select Process</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option><a class="nav-link" href="{% url 'jkks8' %}">S8</a></option>
+                <option>S1</option>
+                <option>S2</option>
+                <option>S3</option>
+                <option>S4</option>
+              </select>
+            </div>
+            <button type="submit">Select</button>
+          </form>
+          </h3>
+      </div>
 
-        
-    </form>
-
-</div>
-
-<!-- <h1>Laps:</h1> -->
-  
-    <div id="laps">
-      <p id="lapRecord"></p>
-      <p id="stepRecord"></p>
-      <!-- <p id="x"></p> -->
-      <!-- <p id="xarray"></p> -->
     </div>
 
-{% endblock %}
-
-{% block javascript %}
-<script>
-    const lapBtn = document.getElementById('lapBtn');
-    const timerMilliSec = document.getElementById('timerMilliSec');
-    const timerSec = document.getElementById('timerSec');
-    // const timerMins = document.getElementById('timerMins');
-    // const timerHrs = document.getElementById('timerHrs');
-    const startBtn = document.getElementById('startBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const lapRecord = document.getElementById('lapRecord');
-    const stepRecord = document.getElementById('stepRecord');
-    const xarray = [];
-    let x
     
-    
-    
-    
-    // let hours = 0;
-    // let minutes = 0;
-    let seconds = 0;
-    let miliseconds = 0;
-    
-    let displayMilisec = miliseconds;
-    let displaySec = seconds;
-    // let displayMins = minutes;
-    // let displayHours = hours;
-    
-    let interval = null;
-    
-    let status = "stopped";
-    let lapNow = null;
-    let stepNum = null;
-    let y = null;
-    
-    function start() {
-      miliseconds++;
-    
-      if (miliseconds < 10) displayMilisec = "0" + miliseconds.toString();
-      else displayMilisec = miliseconds;
-    
-      if (seconds < 10) displaySec = "0" + seconds.toString();
-      else displaySec = seconds;
-    
-    //   if (minutes < 10) displayMins = "0" + minutes.toString();
-    //   else displayMins = minutes;
-    
-    //   if (hours < 10) displayHours = "0" + hours.toString();
-    //   else displayHours = hours;
-    
-      if (miliseconds / 100 === 1) {
-        seconds++;
-        miliseconds = 0;
-    
-        // if (seconds / 60 === 1) {
-        //   minutes++;
-        //   seconds = 0;
-    
-        // //   if (minutes / 60 === 1) {
-        // //     hours++;
-        // //     minutes = 0;
-        //   }
-        // }
-      }
-    
-    
-      timerMilisec.innerHTML = displayMilisec;
-      timerSec.innerHTML = displaySec;
-    //   timerMins.innerHTML = displayMins;
-    //   timerHrs.innerHTML = displayHours;
-    
-    }
-    
-    function startStop() {
-      if (status === "stopped") {
-        interval = setInterval(start, 10);
-        startBtn.innerHTML = "Stop";
-        status = "started";
-      } else {
-        clearInterval(interval);
-        startBtn.innerHTML = "Start";
-        status = "stopped";
-      }
-    }
-    
-    function reset() {
-      clearInterval(interval);
-      miliseconds = 0;
-      seconds = 0;
-      stepNum = 0;
-    //   minutes = 0;
-    //   hours = 0;
-      timerMilisec.innerHTML = "00";
-      timerSec.innerHTML = "000";
-    //   timerMins.innerHTML = "00";
-    //   timerHrs.innerHTML = "00";
-      startBtn.innerHTML = "Start";
-      lapRecord.innerHTML = '';
-      status = "stopped";
-    }
-    
-    function lap() {
-      stepNum++
-      lapNow = `<div class="lap">${seconds} : ${stepNum} </div>`;
-      // xarray.push(toString(seconds))
-      lapRecord.innerHTML += lapNow;
-      xarray.push(seconds+(miliseconds/100))
-      x = xarray.join(',');
-      // document.getElementById('id_element'+ stepNum).value = `${seconds}`;
-    //   if (stepNum == 1) {
-        document.getElementById('id_steptime_1').value = xarray[0].toFixed(2);
-        document.getElementById('id_steptime_2').value = (xarray[1] - xarray[0]).toFixed(2);
-        document.getElementById('id_steptime_3').value = (xarray[2] - xarray[1]).toFixed(2);
-        if (xarray[0].toFixed(2) > document.querySelector("body > div > div > main > div:nth-child(2) > form > table > tbody > tr:nth-child(1) > td:nth-child(4)")) {
-            document.getElementById('id_checkstatus_1').value = true;
-        }   else {
-            document.getElementById('id_checkstatus_1').value = false;
-        }
-        
-    //   //  block of code to be executed if the condition is true
-    //   } else {
-    //     document.getElementById('id_steptime_'+ stepNum).value = xarray[stepNum-1] - xarray[stepNum-2];
-    //   }
-      // document.getElementById('id_element1').value = xarray[0];
-      // document.getElementById('id_element'+ stepNum).value = xarray[stepNum-1] - xarray[stepNum-2];
-      
-    //   stepRecord.innerHTML ++;
-    
-    }
-    
-    lapBtn.addEventListener('click', lap);
-    startBtn.addEventListener('click', startStop);
-    resetBtn.addEventListener('click', reset);
-    
-    
-    
-    
-    document.querySelector("body > div > div > main > div:nth-child(2) > form > table > tbody > tr:nth-child(1) > td:nth-child(4)")
-    
-    </script>    
-
 {% endblock %}

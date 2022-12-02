@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Jkks8, s8elements
+from .models import Jkks8, s8elements, teamLeader, teamMember
 
 
 
@@ -7,4 +7,6 @@ from .models import Jkks8, s8elements
 # admin.site.register(Jkk)
 admin.site.register(Jkks8)
 admin.site.register(s8elements)
+admin.site.register(teamMember)
+admin.site.register(teamLeader)
 
