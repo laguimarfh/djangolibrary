@@ -25,6 +25,7 @@ class Jkks8(models.Model):
     jkk_teammember = models.ForeignKey('teamMember', on_delete=models.SET_NULL, null=True)
     jkk_auditor = models.ForeignKey('teamLeader', on_delete=models.SET_NULL, null=True)
     periodadh = models.FloatField(null=True, blank=True)
+    sumelemtime = models.FloatField(null=True, blank=True)
     # step_1 = models.CharField(max_length=300)
     # step_2 = models.CharField(max_length=300)
     # step_3= models.CharField(max_length=300)

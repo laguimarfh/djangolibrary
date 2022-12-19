@@ -7,6 +7,13 @@ from django.db.models import Q
 import datetime
 
 # Create your views here.
+
+class ImageView(TemplateView):
+    """
+    The CS homepage
+    """
+    template_name = 'inputcs/imagetab.html'
+
 class HomeView(ListView):
     """
     The CS homepage

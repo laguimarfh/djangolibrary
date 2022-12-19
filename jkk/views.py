@@ -26,6 +26,7 @@ class jkkhomeView(TemplateView):
     The JKK S8 PROCESS
     """
     template_name = 'jkk/home.html'
+    
 
     # def get_context_data(self, **kwargs):
     #     jkks8_form = jkks8Form
@@ -33,6 +34,7 @@ class jkkhomeView(TemplateView):
     #     context['jkks8_form'] = jkks8_form
         
     #     return context
+
 
 
 
@@ -47,7 +49,6 @@ class jkks8View(CreateView):
         jkks8_form = jkks8Form
         context = super().get_context_data(**kwargs)
         context['jkks8_form'] = jkks8_form
-        
         return context
 
 

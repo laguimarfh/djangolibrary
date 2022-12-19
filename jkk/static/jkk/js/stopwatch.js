@@ -226,7 +226,9 @@
       // document.getElementById('id_element'+ stepNum).value = xarray[stepNum-1] - xarray[stepNum-2];
       
     //   stepRecord.innerHTML ++;
-    document.getElementById('id_periodadh').value = (6-stepadh)/6;
+    document.getElementById('id_periodadh').value = ((6-stepadh)/6).toFixed(2);
+    document.getElementById('id_sumelemtime').value = xarray[5];
+    
     
     }
     

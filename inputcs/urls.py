@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
+    path('imagetab/', views.ImageView.as_view(), name='image'),
     path('defect/<int:pk>', views.DefectDetailView.as_view(), name='defect-detail'),
     path('input/', views.DefectCreateView.as_view(), name='input'),  # Set root to home view
     # path('list/', views.sheet_list, name="sheet-list"),
